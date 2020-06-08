@@ -28,6 +28,10 @@ x_val = 150
 y_val = 200
 x_direction = 1
 y_direction = 1
+padd_length = 15
+padd_width = 60
+x_padd = 0
+y_padd = 20
 
 ### -- Game Loop
 while not done:
@@ -35,7 +39,28 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    # End If
+    #End If
+if event.type == pygame.KEYDOWN:
+    if event.key == pygame.K_UP:
+        y_padd = y_padd + 5
+
+    elif event.key == pygame.K_DOWN:
+        y_padd = y_padd - 5
+    #End If
+#End If
+    
+    if x_val == 0:
+        x_direction = x_direction * -1
+
+    if x_val == 620:
+        x_direction = x_direction * -1
+
+    if y_val == 0:
+        y_direction = y_direction * -1
+
+    if y_val == 460:
+        y_direction = y_direction * -1
+        
     # Next event
     # -- Game logic goes after this comment
     x_val = x_val + x_direction
@@ -43,10 +68,12 @@ while not done:
     # -- Screen background is BLACK
     screen.fill(BLACK)
     # -- Draw here
-    pygame.draw.rect(screen, BLUE, (x_val, y_val), ball_width, ball_width)
+    pygame.draw.rect(screen, BLUE, (x_val, y_val, ball_width, ball_width))
+    pygame.draw.rect(screen, WHITE, (x_padd, y_padd, padd_length, padd_width))
     # -- flip display to reveal new position of objects
     pygame.display.flip()
     # - The clock ticks over
     clock.tick(60)
 ### End While - End of game loop
+    
 pygame.quit()
