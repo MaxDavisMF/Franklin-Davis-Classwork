@@ -46,8 +46,7 @@ if event.type == pygame.KEYDOWN:
 
     elif event.key == pygame.K_DOWN:
         y_padd = y_padd - 5
-    #End If
-#End If
+
     
     if x_val == 0:
         x_direction = x_direction * -1
