@@ -1,3 +1,6 @@
+### SRC - Your file didn't have a "py" extension so I have added that.
+### This is a good effort, but he parabola looks a bit shallow. Can you get it
+### to curve more? It would be good to add some more detail like a blue sky, roof etc.
 
 import pygame
 # -- Global Constants   
