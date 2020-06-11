@@ -32,6 +32,7 @@ padd_length = 15
 padd_width = 60
 x_padd = 0
 y_padd = 20
+collision_point = 0
 
 ### -- Game Loop
 while not done:
@@ -40,7 +41,7 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     #End If
-
+    collision_point = y_padd + 60
     keys = pygame.key.get_pressed()
     ## - the up/down key gets pressed
     if keys[pygame.K_UP]:
@@ -68,9 +69,9 @@ while not done:
         
     # Next event
     #collision with paddle
-    if x_val == 15:
-        if y_val < y_padd and y_val > (y_padd + padd_width):
+    if y_val < y_padd and y_val > (y_padd + 60) and x_val < (x_padd + padd_length):
             x_direction = x_direction * -1
+            
     # -- Game logic goes after this comment
     x_val = x_val + x_direction
     y_val = y_val + y_direction
