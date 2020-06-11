@@ -40,13 +40,19 @@ while not done:
         if event.type == pygame.QUIT:
             done = True
     #End If
-if event.type == pygame.KEYDOWN:
-    if event.key == pygame.K_UP:
-        y_padd = y_padd + 5
 
-    elif event.key == pygame.K_DOWN:
-        y_padd = y_padd - 5
-
+    keys = pygame.key.get_pressed()
+    ## - the up/down key gets pressed
+    if keys[pygame.K_UP]:
+            y_padd = y_padd -5
+    if keys[pygame.K_DOWN]:
+            y_padd = y_padd + 5
+    # - If padd moves off screen
+    if y_padd > 420:
+        y_padd = 420
+    if y_padd < 0:
+        y_padd = 0
+    
     
     if x_val == 0:
         x_direction = x_direction * -1
@@ -61,6 +67,10 @@ if event.type == pygame.KEYDOWN:
         y_direction = y_direction * -1
         
     # Next event
+    #collision with paddle
+    if x_val == 15:
+        if y_val < y_padd and y_val > (y_padd + padd_width):
+            x_direction = x_direction * -1
     # -- Game logic goes after this comment
     x_val = x_val + x_direction
     y_val = y_val + y_direction
